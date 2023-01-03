@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useState } from "react";
+import Board from "./components/Board.js";
 
 function App() {
+  const defaultCards = [
+    {
+      cardId: 1,
+      description: "Card text",
+      isLiked: false,
+    },
+    {
+      cardId: 2,
+      description: "Another card text",
+      isLiked: false,
+    },
+  ];
+  const [cardData, setCardData] = useState([defaultCards]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Board cardData={cardData} />
     </div>
   );
 }

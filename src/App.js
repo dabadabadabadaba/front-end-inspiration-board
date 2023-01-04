@@ -34,6 +34,7 @@ function App() {
           ...card,
           likes_count: updatedLikes,
         };
+        console.log(newCard);
         newCardsList.push(newCard);
       }
     }
@@ -48,9 +49,7 @@ function App() {
 
   return (
     <div>
-      <Board 
-      cardData={cardData}
-      updateLikes={updateLikes} />
+      <Board cardData={cardData} updateLikes={updateLikes} />
     </div>
   );
 }

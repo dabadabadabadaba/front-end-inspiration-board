@@ -6,13 +6,18 @@ const Card = ({ cardId, message, likes_count, updateLikes }) => {
     updateLikes(cardId, likes_count + 1);
   }
 
-
   return (
     <div>
       <ul>
         <li>{message}</li>
         <li>{likes_count}</li>
-        <button onClick={() => {addLikes()}}>Like!</button>
+        <button
+          onClick={() => {
+            addLikes();
+          }}
+        >
+          Like!
+        </button>
       </ul>
     </div>
   );
@@ -23,5 +28,6 @@ const Card = ({ cardId, message, likes_count, updateLikes }) => {
 export default Card;
 
 Card.propTypes = {
-  //need to add functions
+  cardId: PropTypes.number.isRequired,
+  updateLikes: PropTypes.func.isRequired,
 };

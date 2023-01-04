@@ -6,7 +6,7 @@ function Board({ cardData, updateLikes }) {
   const cardsList = cardData;
 
   for (const card of cardsList) {
-    console.log(card);
+    console.log(`Printing card data from board ${card}`);
     cardComponents.push(
       <Card
         key={card.cardId}
@@ -27,7 +27,7 @@ Board.propTypes = {
       likes_count: PropTypes.number.isRequired,
     })
   ),
-  updateLikes: PropTypes.func.isRequired
+  updateLikes: PropTypes.func.isRequired,
 };
 
 export default Board;

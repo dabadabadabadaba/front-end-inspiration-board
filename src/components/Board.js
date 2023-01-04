@@ -1,4 +1,4 @@
-import PropTypes from "react";
+import PropTypes from "prop-types";
 import Card from "./Card";
 
 function Board({ cardData }) {
@@ -9,8 +9,8 @@ function Board({ cardData }) {
     console.log(card);
     cardComponents.push(
       <Card
-        key={card.id}
-        id={card.id}
+        key={card.cardId}
+        id={card.cardId}
         message={card.message}
         likes_count={card.likes_count}
       />
@@ -18,14 +18,14 @@ function Board({ cardData }) {
   }
   return <div>{cardComponents}</div>;
 }
-// Board.propTypes = {
-//   cardsList: PropTypes.arrayOf(
-//     PropTypes.shape({
-//       // id: PropTypes.number.isRequired,
-//       description: PropTypes.string.isRequired,
-//       isLiked: PropTypes.bool.isRequired,
-//     })
-// ),
-//};
+Board.propTypes = {
+  cardsList: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      message: PropTypes.string.isRequired,
+      likes_count: PropTypes.number.isRequired,
+    })
+  ),
+};
 
 export default Board;

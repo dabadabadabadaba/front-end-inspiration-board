@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import Card from "./Card";
 
-function Board({ cardData }) {
+function Board({ cardData, updateLikes }) {
   const cardComponents = [];
   const cardsList = cardData;
 
@@ -13,6 +13,7 @@ function Board({ cardData }) {
         id={card.cardId}
         message={card.message}
         likes_count={card.likes_count}
+        updateLikes={updateLikes}
       />
     );
   }
@@ -26,6 +27,7 @@ Board.propTypes = {
       likes_count: PropTypes.number.isRequired,
     })
   ),
+  updateLikes: PropTypes.func.isRequired
 };
 
 export default Board;

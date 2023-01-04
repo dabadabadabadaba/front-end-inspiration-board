@@ -1,14 +1,18 @@
 import PropTypes from "prop-types";
 import "./Card.css";
-import Likes from "./Likes";
 
-const Card = ({ cardId, message, likes_count }) => {
+const Card = ({ cardId, message, likes_count, updateLikes }) => {
+  function addLikes() {
+    updateLikes(cardId, likes_count + 1);
+  }
+
+
   return (
     <div>
       <ul>
         <li>{message}</li>
-        <Likes />
-        {/* <li>{likes_count}</li> */}
+        <li>{likes_count}</li>
+        <button onClick={() => {addLikes()}}>Like!</button>
       </ul>
     </div>
   );

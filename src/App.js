@@ -6,13 +6,13 @@ function App() {
   const defaultCards = [
     {
       cardId: 1,
-      description: "Card text",
-      isLiked: false,
+      message: "Card text",
+      likes_count: false,
     },
     {
       cardId: 2,
-      description: "Another card text",
-      isLiked: false,
+      message: "Another card text",
+      likes_count: false,
     },
   ];
   const [cardData, setCardData] = useState([defaultCards]);

@@ -11,8 +11,8 @@ function Board({ cardData }) {
       <Card
         key={card.id}
         id={card.id}
-        description={card.description}
-        liked={card.isLiked}
+        message={card.message}
+        likes_count={card.likes_count}
       />
     );
   }

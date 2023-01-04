@@ -20,7 +20,7 @@ function App() {
     return { ...card };
   });
 
-  const [cardData, setCardData] = useState([initialCopy]);
+  const [cardData, setCardData] = useState(initialCopy);
 
   //Need to make a patch request to database (when ready)
   const updateLikes = (cardId, updatedLikes) => {

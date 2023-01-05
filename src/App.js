@@ -11,7 +11,7 @@ const INITIAL_CARDS = [
   {
     cardId: 2,
     message: "Another card text",
-    likes_count: 0,
+    likes_count: 90,
   },
 ];
 
@@ -22,12 +22,15 @@ function App() {
 
   const [cardData, setCardData] = useState(initialCopy);
 
+  console.log(cardData);
+
   //Need to make a patch request to database (when ready)
   const updateLikes = (cardId, updatedLikes) => {
     console.log("updateLikes called");
     const newCardsList = [];
     for (const card of cardData) {
-      if (card.id !== cardId) {
+      console.log(`Card.id is ${card.id} and cardId is ${cardId}`);
+      if (card.cardId !== cardId) {
         newCardsList.push(card);
       } else {
         const newCard = {

@@ -6,11 +6,11 @@ function Board({ cardData, updateLikes }) {
   const cardsList = cardData;
 
   for (const card of cardsList) {
-    console.log(`Printing card data from board ${card}`);
+    // console.log(`Printing card data from board ${card}`);
     cardComponents.push(
       <Card
         key={card.cardId}
-        id={card.cardId}
+        cardId={card.cardId}
         message={card.message}
         likes_count={card.likes_count}
         updateLikes={updateLikes}
@@ -22,7 +22,7 @@ function Board({ cardData, updateLikes }) {
 Board.propTypes = {
   cardsList: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number.isRequired,
+      cardId: PropTypes.number.isRequired,
       message: PropTypes.string.isRequired,
       likes_count: PropTypes.number.isRequired,
     })

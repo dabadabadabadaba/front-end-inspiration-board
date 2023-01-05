@@ -24,8 +24,6 @@ const Card = ({ cardId, message, likes_count, updateLikes }) => {
   );
 };
 
-//Need function to add likes (this should be a func passed down as a prop from APP)
-
 export default Card;
 
 Card.propTypes = {

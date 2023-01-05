@@ -1,6 +1,20 @@
 import "./App.css";
 import { useState } from "react";
 import Board from "./components/Board.js";
+import NewBoardForm from "./components/NewBoardForm.js";
+
+const INITIAL_BOARDS = [
+  {
+    boardId: 1,
+    owner: "Owner name",
+    title: "Board title",
+  },
+  {
+    boardId: 2,
+    owner: "Another owner name",
+    title: "Second board title",
+  },
+];
 
 const INITIAL_CARDS = [
   {
@@ -16,13 +30,11 @@ const INITIAL_CARDS = [
 ];
 
 function App() {
-  const initialCopy = INITIAL_CARDS.map((card) => {
+  const initialCardCopy = INITIAL_CARDS.map((card) => {
     return { ...card };
   });
 
-  const [cardData, setCardData] = useState(initialCopy);
-
-  console.log(cardData);
+  const [cardData, setCardData] = useState(initialCardCopy);
 
   //Need to make a patch request to database (when ready)
   const updateLikes = (cardId, updatedLikes) => {
@@ -44,15 +56,28 @@ function App() {
     setCardData(newCardsList);
   };
 
+  const initialBoardCopy = INITIAL_BOARDS.map((board) => {
+    return { ...board };
+  });
+
+  const [boardData, setBoardData] = useState(initialBoardCopy);
+
   //Need function to connect set of cards to 1 board
 
   //Need function for creating a new board
+
+  const addBoard = (newBoardInfo) => {};
 
   //Need function for creating a new card
 
   return (
     <div>
-      <Board cardData={cardData} updateLikes={updateLikes} />
+      <Board
+        boardData={boardData}
+        cardData={cardData}
+        updateLikes={updateLikes}
+      />
+      <NewBoardForm addBoardFunc={addBoard} />
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import Card from "./Card";
 
-function Board({ cardData, updateLikes }) {
+function Board({ boardData, cardData, updateLikes }) {
   const cardComponents = [];
   const cardsList = cardData;
 

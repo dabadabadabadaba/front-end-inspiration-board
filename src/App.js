@@ -2,17 +2,20 @@ import "./App.css";
 import { useState } from "react";
 import Board from "./components/Board.js";
 import NewBoardForm from "./components/NewBoardForm.js";
+import NewCardForm from "./components/NewCardForm.js";
 
 const INITIAL_BOARDS = [
   {
     boardId: 1,
     owner: "Owner name",
     title: "Board title",
+    card: [],
   },
   {
     boardId: 2,
     owner: "Another owner name",
     title: "Second board title",
+    card: [],
   },
 ];
 
@@ -56,19 +59,42 @@ function App() {
     setCardData(newCardsList);
   };
 
+  //Function to create new card
+  const addCard = (newCardInfo) => {
+    const newCardList = [...cardData];
+
+    const nextId = Math.max(...newCardList.map((card) => card.cardId)) + 1;
+
+    newCardList.push({
+      cardId: nextId,
+      message: newCardInfo.message,
+      likes_count: 0,
+    });
+    setCardData(newCardList);
+  };
+
   const initialBoardCopy = INITIAL_BOARDS.map((board) => {
     return { ...board };
   });
 
   const [boardData, setBoardData] = useState(initialBoardCopy);
 
+  // Function to create new board
+  const addBoard = (newBoardInfo) => {
+    const newBoardList = [...boardData];
+
+    const nextId = Math.max(...newBoardList.map((board) => board.boardId)) + 1;
+
+    newBoardList.push({
+      boardId: nextId,
+      owner: newBoardInfo.owner,
+      title: newBoardInfo.title,
+      card: [],
+    });
+    setBoardData(newBoardList);
+  };
+
   //Need function to connect set of cards to 1 board
-
-  //Need function for creating a new board
-
-  const addBoard = (newBoardInfo) => {};
-
-  //Need function for creating a new card
 
   return (
     <div>
@@ -78,6 +104,7 @@ function App() {
         updateLikes={updateLikes}
       />
       <NewBoardForm addBoardFunc={addBoard} />
+      <NewCardForm addCardFunc={addCard} />
     </div>
   );
 }

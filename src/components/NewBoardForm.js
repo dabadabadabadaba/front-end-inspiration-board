@@ -16,11 +16,11 @@ const NewBoardForm = (props) => {
       `Target name: ${e.target.name} Target value: ${e.target.value}`
     );
 
-    const newBoardData = {
-      ...boardFormData,
-      [e.target.name]: e.target.value,
-    };
-    setBoardFormData(newBoardData);
+  const newBoardData = {
+    ...boardFormData,
+    [e.target.name]: e.target.value,
+  };
+  setBoardFormData(newBoardData);
   };
 
   const handleNewBoardSubmit = (e) => {

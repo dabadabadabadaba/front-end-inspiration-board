@@ -17,7 +17,19 @@ function Board({ boardData, cardData, updateLikes }) {
       />
     );
   }
-  return <div>{cardComponents}</div>;
+
+  const boardComponents = [];
+  const boardList = boardData;
+
+  for (const board of boardList) {
+    boardComponents.push(board.owner, board.title, board.card);
+  }
+  return (
+    <div>
+      {cardComponents}
+      {boardComponents}
+    </div>
+  );
 }
 Board.propTypes = {
   cardsList: PropTypes.arrayOf(

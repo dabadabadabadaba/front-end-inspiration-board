@@ -46,9 +46,7 @@ function App() {
 
   const URL = "http://localhost:5000/board";
 
-  // const getAllBoards = ()
-
-  useEffect(() => {
+  const getAllBoards = () => {
     axios
       .get(URL)
       .then((response) => {
@@ -66,7 +64,18 @@ function App() {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  };
+
+  useEffect(getAllBoards, []);
+
+  // onClick({displayAllCardsForOneBoard})
+  const displayAllCardsForOneBoard = (boardId) => {
+    axios.get(`${URL}/${boardId}/card`).then((response) => {
+      return {
+        cards: response.data,
+      };
+    });
+  };
 
   //Need to make a patch request to database (when ready)
   const updateLikes = (cardId, updatedLikes) => {
@@ -96,33 +105,60 @@ function App() {
   };
 
   //Function to create new card
-  const addCard = (newCardInfo) => {
-    const newCardList = [...cardData];
-
-    const nextId = Math.max(...newCardList.map((card) => card.cardId)) + 1;
-
-    newCardList.push({
-      cardId: nextId,
-      message: newCardInfo.message,
-      likes_count: 0,
+  const addCard = (boardId, newCardInfo) => {
+    console.log(boardId);
+    console.log(newCardInfo);
+    axios.post(`${URL}/${boardId.board_id}/card`).then((response) => {
+      console.log(boardId);
+      const newCardList = [...cardData];
+      newCardList.push({
+        cardId: response.data.card_id,
+        message: boardId.message,
+        likes_count: response.data.likes_count,
+      });
+      setCardData(newCardList);
     });
-    setCardData(newCardList);
   };
+
+  // const nextId = Math.max(...newCardList.map((card) => card.cardId)) + 1;
+
+  //   newCardList.push({
+  //     cardId: nextId,
+  //     message: newCardInfo.message,
+  //     likes_count: 0,
+  //   });
+  //   setCardData(newCardList);
+  // };
 
   // Function to create new board, needs POST with axios
   const addBoard = (newBoardInfo) => {
-    const newBoardList = [...boardData];
-
-    const nextId = Math.max(...newBoardList.map((board) => board.boardId)) + 1;
-
-    newBoardList.push({
-      boardId: nextId,
-      owner: newBoardInfo.owner,
-      title: newBoardInfo.title,
-      card: [],
-    });
-    setBoardData(newBoardList);
+    axios
+      .post(URL, newBoardInfo)
+      .then((response) => {
+        getAllBoards();
+        const newBoardList = [...boardData];
+        const newBoardJSON = {
+          ...newBoardInfo,
+          boardId: response.data.board_id,
+        };
+        newBoardList.push(newBoardJSON);
+        setBoardData(newBoardList);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
+
+  // const nextId = Math.max(...newBoardList.map((board) => board.boardId)) + 1;
+
+  //   newBoardList.push({
+  //     boardId: nextId,
+  //     owner: newBoardInfo.owner,
+  //     title: newBoardInfo.title,
+  //     card: [],
+  //   });
+  //   setBoardData(newBoardList);
+  // };
 
   //Need function to connect set of cards to 1 board
 
@@ -132,6 +168,7 @@ function App() {
         boardData={boardData}
         cardData={cardData}
         updateLikes={updateLikes}
+        displayAllCardsForOneBoard={displayAllCardsForOneBoardA}
       />
       <NewBoardForm addBoardFunc={addBoard} />
       <NewCardForm addCardFunc={addCard} />

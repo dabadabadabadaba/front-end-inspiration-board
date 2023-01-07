@@ -1,7 +1,12 @@
 import PropTypes from "prop-types";
 import Card from "./Card";
 
-function Board({ boardData, cardData, updateLikes }) {
+function Board({
+  displayAllCardsForOneBoard,
+  boardData,
+  cardData,
+  updateLikes,
+}) {
   const cardComponents = [];
   const cardsList = cardData;
 
@@ -24,10 +29,14 @@ function Board({ boardData, cardData, updateLikes }) {
   for (const board of boardList) {
     boardComponents.push(board.owner, board.title, board.card);
   }
+  for (const board of boardComponents) {
+  }
   return (
     <div>
-      {cardComponents}
-      {boardComponents}
+      <ul>
+        {cardComponents}
+        {boardComponents}
+      </ul>
     </div>
   );
 }

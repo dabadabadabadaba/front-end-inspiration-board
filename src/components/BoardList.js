@@ -25,10 +25,14 @@ function BoardList({
   return (
     <div>
       <ul
-        onClick={() => {
+        onChange={() => {
           displayAllCardsForOneBoard();
         }}
-      ></ul>
+      >
+        {ListofBoards}
+      </ul>
     </div>
   );
 }
+
+export default BoardList;

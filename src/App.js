@@ -4,45 +4,18 @@ import Board from "./components/Board.js";
 import NewBoardForm from "./components/NewBoardForm.js";
 import NewCardForm from "./components/NewCardForm.js";
 import axios from "axios";
-
-// const INITIAL_BOARDS = [
-//   {
-//     boardId: 1,
-//     owner: "Owner name",
-//     title: "Board title",
-//     card: [],
-//   },
-//   {
-//     boardId: 2,
-//     owner: "Another owner name",
-//     title: "Second board title",
-//     card: [],
-//   },
-// ];
-
-// const INITIAL_CARDS = [
-//   {
-//     cardId: 1,
-//     message: "Card text",
-//     likes_count: 0,
-//   },
-//   {
-//     cardId: 2,
-//     message: "Another card text",
-//     likes_count: 90,
-//   },
-// ];
+import BoardList from "./components/BoardList.js";
 
 function App() {
-  // const initialBoardCopy = INITIAL_BOARDS.map((board) => {
-  //   return { ...board };
-  // });
-  // const initialCardCopy = INITIAL_CARDS.map((card) => {
-  //   return { ...card };
-  // });
-
   const [cardData, setCardData] = useState([]);
   const [boardData, setBoardData] = useState([]);
+  const [selectedBoard, setSelectedBoard] = useState({
+    // try selectedBoard.board_id etc.
+    boardId: null,
+    owner: "",
+    title: "",
+    cards: [],
+  });
 
   const URL = "http://localhost:5000/board";
 
@@ -120,16 +93,6 @@ function App() {
     });
   };
 
-  // const nextId = Math.max(...newCardList.map((card) => card.cardId)) + 1;
-
-  //   newCardList.push({
-  //     cardId: nextId,
-  //     message: newCardInfo.message,
-  //     likes_count: 0,
-  //   });
-  //   setCardData(newCardList);
-  // };
-
   // Function to create new board, needs POST with axios
   const addBoard = (newBoardInfo) => {
     axios
@@ -149,18 +112,9 @@ function App() {
       });
   };
 
-  // const nextId = Math.max(...newBoardList.map((board) => board.boardId)) + 1;
-
-  //   newBoardList.push({
-  //     boardId: nextId,
-  //     owner: newBoardInfo.owner,
-  //     title: newBoardInfo.title,
-  //     card: [],
-  //   });
-  //   setBoardData(newBoardList);
-  // };
-
   //Need function to connect set of cards to 1 board
+  // Need a function to select 1 board- not sure if it should be in App or BoardList?
+  // Render the selected board here in App
 
   return (
     <div>

@@ -3,43 +3,39 @@ import Card from "./Card";
 
 function Board({
   displayAllCardsForOneBoard,
-  boardData,
+  title,
+  owner,
+  cards,
   cardData,
   updateLikes,
-}) {
-  const cardComponents = [];
-  const cardsList = cardData;
+}) 
+{
+  // const cardComponents = [];
+  // const cardsList = cardData;
 
-  for (const card of cardsList) {
-    // console.log(`Printing card data from board ${card}`);
-    cardComponents.push(
-      <Card
-        key={card.cardId}
-        cardId={card.cardId}
-        message={card.message}
-        likes_count={card.likes_count}
-        updateLikes={updateLikes}
-      />
-    );
-  }
-
-  const boardComponents = [];
-  const boardList = boardData;
-
-  for (const board of boardList) {
-    boardComponents.push(board.owner, board.title, board.card);
-  }
+  // for (const card of cardsList) {
+  //   // console.log(`Printing card data from board ${card}`);
+  //   cardComponents.push(
+  //     <Card
+  //       key={card.cardId}
+  //       cardId={card.cardId}
+  //       message={card.message}
+  //       likes_count={card.likes_count}
+  //       updateLikes={updateLikes}
+  //     />
+  //   );
+  // }
 
   return (
     <div>
-      <ul
+      <li
         onClick={() => {
           displayAllCardsForOneBoard();
         }}
       >
-        {cardComponents}
-        {boardComponents}
-      </ul>
+        {/* {cardComponents} */}
+        {title}
+      </li>
     </div>
   );
 }

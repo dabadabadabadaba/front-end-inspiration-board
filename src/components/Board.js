@@ -29,11 +29,14 @@ function Board({
   for (const board of boardList) {
     boardComponents.push(board.owner, board.title, board.card);
   }
-  for (const board of boardComponents) {
-  }
+
   return (
     <div>
-      <ul>
+      <ul
+        onClick={() => {
+          displayAllCardsForOneBoard();
+        }}
+      >
         {cardComponents}
         {boardComponents}
       </ul>

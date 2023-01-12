@@ -164,11 +164,11 @@ function App() {
 
   return (
     <div>
-      <Board
+      <BoardList
         boardData={boardData}
         cardData={cardData}
         updateLikes={updateLikes}
-        displayAllCardsForOneBoard={displayAllCardsForOneBoardA}
+        displayAllCardsForOneBoard={displayAllCardsForOneBoard}
       />
       <NewBoardForm addBoardFunc={addBoard} />
       <NewCardForm addCardFunc={addCard} />

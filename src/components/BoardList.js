@@ -7,6 +7,7 @@ function BoardList({
   cardData,
   updateLikes,
   displayAllCardsForOneBoard,
+  setSelectedBoard,
 }) {
   const ListofBoards = [];
 
@@ -17,17 +18,20 @@ function BoardList({
         boardId={board.boardId}
         owner={board.owner}
         title={board.title}
-        card={board.card}
+        cards={board.cards}
+        cardData={cardData}
+        setSelectedBoard={setSelectedBoard}
+        displayAllCardsForOneBoard={displayAllCardsForOneBoard}
       />
     );
   }
-
+  console.log(cardData);
   return (
     <div>
       <ul
-        onChange={() => {
-          displayAllCardsForOneBoard();
-        }}
+      //   onChange={() => {
+      //     displayAllCardsForOneBoard();
+      //   }}
       >
         {ListofBoards}
       </ul>

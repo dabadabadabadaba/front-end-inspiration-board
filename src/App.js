@@ -43,11 +43,19 @@ function App() {
 
   // onClick({displayAllCardsForOneBoard})
   const displayAllCardsForOneBoard = (boardId) => {
-    axios.get(`${URL}/${boardId}/card`).then((response) => {
-      return {
-        cards: response.data,
-      };
-    });
+    axios
+      .get(`${URL}/${boardId}/card`)
+      .then((response) => {
+        console.log("Inside display all cards for 1 board");
+        console.log(response.data);
+
+        return {
+          cards: response.data,
+        };
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   //Need to make a patch request to database (when ready)
@@ -111,6 +119,7 @@ function App() {
         console.log(error);
       });
   };
+  console.log(cardData);
 
   //Need function to connect set of cards to 1 board
   // Need a function to select 1 board- not sure if it should be in App or BoardList?
@@ -121,11 +130,16 @@ function App() {
       <BoardList
         boardData={boardData}
         cardData={cardData}
+        selectedBoard={selectedBoard}
+        setSelectedBoard={setSelectedBoard}
         updateLikes={updateLikes}
         displayAllCardsForOneBoard={displayAllCardsForOneBoard}
       />
       <NewBoardForm addBoardFunc={addBoard} />
       <NewCardForm addCardFunc={addCard} />
+      <div>
+        <Board />
+      </div>
     </div>
   );
 }

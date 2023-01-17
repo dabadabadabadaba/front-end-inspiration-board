@@ -5,9 +5,10 @@ import PropTypes from "prop-types";
 function BoardList({
   boardData,
   cardData,
+  selectedBoard,
+  setSelectedBoard,
   updateLikes,
   displayAllCardsForOneBoard,
-  setSelectedBoard,
 }) {
   const ListofBoards = [];
 
@@ -20,8 +21,10 @@ function BoardList({
         title={board.title}
         cards={board.cards}
         cardData={cardData}
+        selectedBoard={selectedBoard}
         setSelectedBoard={setSelectedBoard}
         displayAllCardsForOneBoard={displayAllCardsForOneBoard}
+        updateLikes={updateLikes}
       />
     );
   }
@@ -39,4 +42,30 @@ function BoardList({
   );
 }
 
+BoardList.propTypes = {
+  boardData: PropTypes.arrayOf(
+    PropTypes.shape({
+      boardId: PropTypes.number.isRequired,
+      owner: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      cards: PropTypes.array.isRequired,
+    })
+  ),
+  cardData: PropTypes.arrayOf(
+    PropTypes.shape({
+      cardId: PropTypes.number.isRequired,
+      message: PropTypes.string.isRequired,
+      likes_count: PropTypes.number.isRequired,
+    })
+  ),
+  selectedBoard: PropTypes.shape({
+    boardId: PropTypes.number.isRequired,
+    owner: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    cards: PropTypes.array.isRequired,
+  }),
+  updateLikes: PropTypes.func.isRequired,
+  displayAllCardsForOneBoard: PropTypes.func.isRequired,
+  setSelectedBoard: PropTypes.func.isRequired,
+};
 export default BoardList;

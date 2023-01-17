@@ -3,14 +3,14 @@ import PropTypes from "prop-types";
 import Card from "./Card";
 
 function Board({
-  displayAllCardsForOneBoard,
-  selectedBoard,
-  setSelectedBoard,
   boardId,
-  title,
   owner,
+  title,
   cards,
   cardData,
+  selectedBoard,
+  setSelectedBoard,
+  displayAllCardsForOneBoard,
   updateLikes,
 }) {
   const cardComponents = [];
@@ -55,13 +55,19 @@ function Board({
   );
 }
 Board.propTypes = {
-  cardsList: PropTypes.arrayOf(
+  cardData: PropTypes.arrayOf(
     PropTypes.shape({
       cardId: PropTypes.number.isRequired,
       message: PropTypes.string.isRequired,
       likes_count: PropTypes.number.isRequired,
     })
   ),
+  selectedBoard: PropTypes.shape({
+    boardId: PropTypes.number.isRequired,
+    owner: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    cards: PropTypes.array.isRequired,
+  }),
   updateLikes: PropTypes.func.isRequired,
   displayAllCardsForOneBoard: PropTypes.func.isRequired,
 };

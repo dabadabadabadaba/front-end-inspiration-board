@@ -11,7 +11,7 @@ function App() {
   const [boardData, setBoardData] = useState([]);
   const [selectedBoard, setSelectedBoard] = useState({
     // try selectedBoard.board_id etc.
-    boardId: null,
+    boardId: 0,
     owner: "",
     title: "",
     cards: [],
@@ -26,12 +26,14 @@ function App() {
         console.log("Calling API");
         const boardsAPICopy = response.data.map((board) => {
           return {
+            // ...board,
             boardId: board.board_id,
             owner: board.owner,
             title: board.title,
-            cards: board.cards_list,
+            cards: board.cards,
           };
         });
+        console.log("console of boardAPICopy", boardsAPICopy);
         setBoardData(boardsAPICopy);
       })
       .catch((error) => {
@@ -78,6 +80,7 @@ function App() {
             newCardsList.push(newCard);
           }
         }
+        console.log("newCardsList consolelog", newCardsList);
         setCardData(newCardsList);
       })
       .catch((error) => {
@@ -137,9 +140,7 @@ function App() {
       />
       <NewBoardForm addBoardFunc={addBoard} />
       <NewCardForm addCardFunc={addCard} />
-      <div>
-        <Board />
-      </div>
+      <div>{/* <Board /> */}</div>
     </div>
   );
 }

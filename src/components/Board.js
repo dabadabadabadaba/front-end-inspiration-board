@@ -14,28 +14,32 @@ function Board({
   updateLikes,
 }) {
   const cardComponents = [];
-  console.log(`Cards${cards}`);
+  // console.log(`Cards${cards}`);
   // const cardsList = cardData;
-  const URL = "http://localhost:5000/board";
-
-  for (const card of cardData) {
+  
+  for (const card of cards) {
     // console.log(`Printing card data from board ${card}`);
     cardComponents.push(
       <Card
-        key={card.cardId}
-        cardId={card.cardId}
-        message={card.message}
-        likes_count={card.likes_count}
-        updateLikes={updateLikes}
+      key={card.cardId}
+      cardId={card.cardId}
+      message={card.message}
+      likes_count={card.likes_count}
+      updateLikes={updateLikes}
       />
-    );
-  }
-
+      );
+    }
+    console.log("cardComponents", cardComponents)
+    
+  const URL = "http://localhost:5000/board";
   const currentBoard = (boardId) => {
     axios.get(`${URL}/${boardId}`).then((response) => {
-      console.log("Calling currentBoard");
-      console.log(response.data);
-      setSelectedBoard(response.data);
+      console.log("Calling currentBoard", response.data);
+      const currentBoardCamel = {
+        ...response.data,
+        boardId: response.data.board_id,
+      };
+      setSelectedBoard(currentBoardCamel);
     });
   };
 

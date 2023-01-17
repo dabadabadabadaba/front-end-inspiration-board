@@ -33,7 +33,7 @@ function App() {
             cards: board.cards,
           };
         });
-        console.log("console of boardAPICopy", boardsAPICopy);
+        // console.log("console of boardAPICopy", boardsAPICopy);
         setBoardData(boardsAPICopy);
       })
       .catch((error) => {
@@ -92,7 +92,7 @@ function App() {
   const addCard = (boardId, newCardInfo) => {
     console.log(boardId);
     console.log(newCardInfo);
-    axios.post(`${URL}/${boardId.board_id}/card`).then((response) => {
+    axios.post(`${URL}/${boardId}/card`).then((response) => {
       console.log(boardId);
       const newCardList = [...cardData];
       newCardList.push({
@@ -122,9 +122,7 @@ function App() {
         console.log(error);
       });
   };
-  console.log(cardData);
 
-  //Need function to connect set of cards to 1 board
   // Need a function to select 1 board- not sure if it should be in App or BoardList?
   // Render the selected board here in App
 
@@ -139,7 +137,8 @@ function App() {
         displayAllCardsForOneBoard={displayAllCardsForOneBoard}
       />
       <NewBoardForm addBoardFunc={addBoard} />
-      <NewCardForm addCardFunc={addCard} />
+      <NewCardForm addCardFunc={addCard} selectedBoard={selectedBoard} />
+      <h2> {selectedBoard.cards.message}</h2>
       <div>{/* <Board /> */}</div>
     </div>
   );

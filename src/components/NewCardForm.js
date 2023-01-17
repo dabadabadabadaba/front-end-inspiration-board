@@ -6,7 +6,7 @@ const INITIAL_FORM_DATA = {
   message: "Type Card Message Here",
 };
 
-const NewCardForm = ({ addCardFunc }) => {
+const NewCardForm = ({ addCardFunc, selectedBoard }) => {
   const [cardFormData, setCardFormData] = useState(INITIAL_FORM_DATA);
 
   const handleChange = (e) => {
@@ -17,6 +17,7 @@ const NewCardForm = ({ addCardFunc }) => {
 
     const newCardData = {
       ...cardFormData,
+      // [e.target.board]:
       [e.target.name]: e.target.value,
     };
     setCardFormData(newCardData);
@@ -24,7 +25,7 @@ const NewCardForm = ({ addCardFunc }) => {
 
   const handleNewCardSubmit = (e) => {
     e.preventDefault();
-    addCardFunc(cardFormData);
+    addCardFunc(selectedBoard.boardId, cardFormData);
   };
 
   return (

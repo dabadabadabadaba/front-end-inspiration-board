@@ -28,7 +28,6 @@ function BoardList({
       />
     );
   }
-  console.log(cardData);
   return (
     <div>
       <ul

@@ -16,21 +16,21 @@ function Board({
   const cardComponents = [];
   // console.log(`Cards${cards}`);
   // const cardsList = cardData;
-  
+
   for (const card of cards) {
     // console.log(`Printing card data from board ${card}`);
     cardComponents.push(
       <Card
-      key={card.cardId}
-      cardId={card.cardId}
-      message={card.message}
-      likes_count={card.likes_count}
-      updateLikes={updateLikes}
+        key={card.card_id}
+        cardId={card.card_id}
+        message={card.message}
+        likes_count={card.likes_count}
+        updateLikes={updateLikes}
       />
-      );
-    }
-    console.log("cardComponents", cardComponents)
-    
+    );
+  }
+  console.log("cardComponents", cardComponents);
+
   const URL = "http://localhost:5000/board";
   const currentBoard = (boardId) => {
     axios.get(`${URL}/${boardId}`).then((response) => {

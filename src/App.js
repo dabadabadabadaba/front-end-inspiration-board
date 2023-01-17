@@ -92,16 +92,21 @@ function App() {
   const addCard = (boardId, newCardInfo) => {
     console.log(boardId);
     console.log(newCardInfo);
-    axios.post(`${URL}/${boardId}/card`).then((response) => {
-      console.log(boardId);
-      const newCardList = [...cardData];
-      newCardList.push({
-        cardId: response.data.card_id,
-        message: boardId.message,
-        likes_count: response.data.likes_count,
+    axios
+      .post(`${URL}/${boardId}/card`)
+      .then((response) => {
+        console.log(boardId);
+        const newCardList = [...cardData];
+        newCardList.push({
+          card_id: response.data.card_id,
+          message: boardId.message,
+          likes_count: response.data.likes_count,
+        });
+        setCardData(newCardList);
+      })
+      .catch((error) => {
+        console.log(error);
       });
-      setCardData(newCardList);
-    });
   };
 
   // Function to create new board, needs POST with axios

@@ -32,6 +32,9 @@ const NewBoardForm = ({ addBoardFunc }) => {
 
   const formClass = isHidden === true ? "hidden" : "show";
 
+  const buttonContent =
+    isHidden === true ? "Expand Board Form" : "Collapse Board Form";
+
   return (
     <div>
       <form className={formClass} onSubmit={handleNewBoardSubmit}>
@@ -53,7 +56,7 @@ const NewBoardForm = ({ addBoardFunc }) => {
         />
         <input type="submit" value="Add Board" />
       </form>
-      <button onClick={() => setIsHidden(!isHidden)}>Hide Board Form</button>
+      <button onClick={() => setIsHidden(!isHidden)}>{buttonContent}</button>
     </div>
   );
 };

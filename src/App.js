@@ -104,7 +104,7 @@ function App() {
             // pre-populate newCardList with the cards in list in board
             // push message from new card (with id and likes from database) to newCardlist
             const newCardList = [...board.cards];
-            console.log("response", response.data.card.card_id);
+            // console.log("response", response.data.card.card_id);
             newCardList.push({
               card_id: response.data.card.card_id, //99
               message: response.data.card.message, //TODO what should this be?? //"hardcoded"
@@ -116,9 +116,10 @@ function App() {
               ...board,
               cards: newCardList,
             };
-            boardData[i] = newBoard;
-            console.log("logging boardData", boardData);
-            setBoardData(boardData);
+            const newBoardDataCopy = [...boardData];
+            newBoardDataCopy[i] = newBoard;
+            console.log("logging boardData", newBoardDataCopy);
+            setBoardData(newBoardDataCopy);
           }
         });
       })
@@ -134,9 +135,11 @@ function App() {
       .then((response) => {
         getAllBoards();
         const newBoardList = [...boardData];
+        console.log(response.data);
         const newBoardJSON = {
           ...newBoardInfo,
-          boardId: response.data.board_id,
+          boardId: response.data.board.board_id,
+          cards: [],
         };
         newBoardList.push(newBoardJSON);
         setBoardData(newBoardList);

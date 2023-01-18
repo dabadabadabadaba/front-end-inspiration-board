@@ -7,7 +7,7 @@ const INITIAL_FORM_DATA = {
   owner: "Type Owner name here",
 };
 
-const NewBoardForm = (props) => {
+const NewBoardForm = ({addBoardFunc}) => {
   const [boardFormData, setBoardFormData] = useState(INITIAL_FORM_DATA);
 
   const handleChange = (e) => {
@@ -25,7 +25,7 @@ const NewBoardForm = (props) => {
 
   const handleNewBoardSubmit = (e) => {
     e.preventDefault();
-    props.addBoardFunc(boardFormData);
+    addBoardFunc(boardFormData);
   };
 
   return (

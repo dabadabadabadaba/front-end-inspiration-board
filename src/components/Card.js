@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import "./Card.css";
 
 const Card = ({ cardId, message, likes_count, updateLikes }) => {
-  console.log(cardId);
+  // console.log("cardId", cardId);
   function addLikes() {
     updateLikes(cardId, likes_count + 1);
   }

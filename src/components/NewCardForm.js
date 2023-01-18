@@ -6,7 +6,12 @@ const INITIAL_FORM_DATA = {
   message: "Type Card Message Here",
 };
 
-const NewCardForm = ({ addCardFunc, selectedBoard }) => {
+const NewCardForm = ({
+  addCardFunc,
+  selectedBoard,
+  boardData,
+  setBoardData,
+}) => {
   const [cardFormData, setCardFormData] = useState(INITIAL_FORM_DATA);
 
   const handleChange = (e) => {
@@ -23,6 +28,8 @@ const NewCardForm = ({ addCardFunc, selectedBoard }) => {
     console.log("new card data in new form", newCardData);
     setCardFormData(newCardData);
   };
+
+  const updateLocalBoardState = () => {};
 
   const handleNewCardSubmit = (e) => {
     e.preventDefault();

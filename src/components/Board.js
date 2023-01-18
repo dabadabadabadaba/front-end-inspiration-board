@@ -7,7 +7,6 @@ function Board({
   owner,
   title,
   cards,
-  // cardData,
   selectedBoard,
   setSelectedBoard,
   displayAllCardsForOneBoard,
@@ -15,7 +14,6 @@ function Board({
 }) {
   const cardComponents = [];
   // console.log(`Cards${cards}`);
-  // const cardsList = cardData;
 
   for (const card of cards) {
     // console.log(`Printing card data from board ${card}`);
@@ -29,7 +27,7 @@ function Board({
       />
     );
   }
-  console.log("cardComponents", cardComponents);
+  // console.log("cardComponents", cardComponents);
 
   const URL = "http://localhost:5000/board";
   const currentBoard = (boardId) => {
@@ -51,7 +49,7 @@ function Board({
           currentBoard(boardId);
         }}
       >
-        {title}
+        <h2>{title}</h2>
         {owner}
         {cardComponents}
       </li>
@@ -59,13 +57,13 @@ function Board({
   );
 }
 Board.propTypes = {
-  // cardData: PropTypes.arrayOf(
-  //   PropTypes.shape({
-  //     cardId: PropTypes.number.isRequired,
-  //     message: PropTypes.string.isRequired,
-  //     likes_count: PropTypes.number.isRequired,
-  //   })
-  // ),
+  cardData: PropTypes.arrayOf(
+    PropTypes.shape({
+      cardId: PropTypes.number.isRequired,
+      message: PropTypes.string.isRequired,
+      likes_count: PropTypes.number.isRequired,
+    })
+  ),
   selectedBoard: PropTypes.shape({
     boardId: PropTypes.number.isRequired,
     owner: PropTypes.string.isRequired,

@@ -20,7 +20,6 @@ function BoardList({
         owner={board.owner}
         title={board.title}
         cards={board.cards}
-        // cardData={cardData}
         selectedBoard={selectedBoard}
         setSelectedBoard={setSelectedBoard}
         displayAllCardsForOneBoard={displayAllCardsForOneBoard}
@@ -30,11 +29,7 @@ function BoardList({
   }
   return (
     <div>
-      <ul
-      //   onChange={() => {
-      //     displayAllCardsForOneBoard();
-      //   }}
-      >
+      <ul>
         {ListofBoards}
       </ul>
     </div>
@@ -50,13 +45,13 @@ BoardList.propTypes = {
       cards: PropTypes.array.isRequired,
     })
   ),
-  // cardData: PropTypes.arrayOf(
-  //   PropTypes.shape({
-  //     cardId: PropTypes.number.isRequired,
-  //     message: PropTypes.string.isRequired,
-  //     likes_count: PropTypes.number.isRequired,
-  //   })
-  // ),
+  cardData: PropTypes.arrayOf(
+    PropTypes.shape({
+      cardId: PropTypes.number.isRequired,
+      message: PropTypes.string.isRequired,
+      likes_count: PropTypes.number.isRequired,
+    })
+  ),
   selectedBoard: PropTypes.shape({
     boardId: PropTypes.number.isRequired,
     owner: PropTypes.string.isRequired,

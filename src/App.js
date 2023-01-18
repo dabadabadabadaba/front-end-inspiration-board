@@ -23,10 +23,9 @@ function App() {
     axios
       .get(URL)
       .then((response) => {
-        console.log("Calling API");
+        // console.log("Calling API");
         const boardsAPICopy = response.data.map((board) => {
           return {
-            // ...board,
             boardId: board.board_id,
             owner: board.owner,
             title: board.title,
@@ -46,7 +45,7 @@ function App() {
   // onClick({displayAllCardsForOneBoard})
   const displayAllCardsForOneBoard = (boardId) => {
     axios
-      .get(`${URL}/${boardId}/card`)
+      .get(`${URL}/${boardId}/card`) //can we change route to "cards"?
       .then((response) => {
         console.log("Inside display all cards for 1 board");
         console.log(response.data);
@@ -60,7 +59,6 @@ function App() {
       });
   };
 
-  //Need to make a patch request to database (when ready)
   const updateLikes = (cardId, updatedLikes) => {
     console.log("updateLikes called");
     const newCardsList = [];
@@ -96,13 +94,32 @@ function App() {
       .post(`${URL}/${boardId}/card`, newCardInfo)
       .then((response) => {
         console.log(boardId);
-        const newCardList = [...cardData];
-        newCardList.push({
-          card_id: response.data.card_id,
-          message: boardId.message,
-          likes_count: response.data.likes_count,
+
+        // find the board that corresponds to boardId (in the boardState "boardData")
+        // update that board's cards with newCardsList
+        //setBoardData to updated boards
+        boardData.forEach((board, i) => {
+          if (board.boardId === boardId) {
+            // find the board that corresponds to boardId
+            // pre-populate newCardList with the cards in list in board
+            // push message from new card (with id and likes from database) to newCardlist
+            const newCardList = [...board.cards];
+            newCardList.push({
+              card_id: response.data.card_id, //99
+              message: boardId.message, //TODO what should this be?? //"hardcoded"
+              likes_count: response.data.likes_count, //100
+            });
+            // set newCardList as valiu of "cards" in new board
+            // assign newBoard to boardData
+            const newBoard = {
+              ...board,
+              cards: newCardList,
+            };
+            boardData[i] = newBoard;
+            console.log("logging boardData", boardData);
+            setBoardData(boardData);
+          }
         });
-        setCardData(newCardList);
       })
       .catch((error) => {
         console.log(error);
@@ -128,7 +145,7 @@ function App() {
       });
   };
 
-  // Need a function to select 1 board- not sure if it should be in App or BoardList?
+  // Need a function to select 1 board - currently in Board
   // Render the selected board here in App
 
   return (
@@ -142,9 +159,13 @@ function App() {
         displayAllCardsForOneBoard={displayAllCardsForOneBoard}
       />
       <NewBoardForm addBoardFunc={addBoard} />
-      <NewCardForm addCardFunc={addCard} selectedBoard={selectedBoard} />
+      <NewCardForm
+        addCardFunc={addCard}
+        selectedBoard={selectedBoard}
+        boardData={boardData}
+        setBoardData={setBoardData}
+      />
       <h2> {selectedBoard.cards.message}</h2>
-      <div>{/* <Board /> */}</div>
     </div>
   );
 }

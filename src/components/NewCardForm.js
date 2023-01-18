@@ -20,6 +20,7 @@ const NewCardForm = ({ addCardFunc, selectedBoard }) => {
       // [e.target.board]:
       [e.target.name]: e.target.value,
     };
+    console.log("new card data in new form", newCardData);
     setCardFormData(newCardData);
   };
 

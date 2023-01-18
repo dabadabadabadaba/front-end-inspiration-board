@@ -7,7 +7,7 @@ function Board({
   owner,
   title,
   cards,
-  cardData,
+  // cardData,
   selectedBoard,
   setSelectedBoard,
   displayAllCardsForOneBoard,
@@ -59,13 +59,13 @@ function Board({
   );
 }
 Board.propTypes = {
-  cardData: PropTypes.arrayOf(
-    PropTypes.shape({
-      cardId: PropTypes.number.isRequired,
-      message: PropTypes.string.isRequired,
-      likes_count: PropTypes.number.isRequired,
-    })
-  ),
+  // cardData: PropTypes.arrayOf(
+  //   PropTypes.shape({
+  //     cardId: PropTypes.number.isRequired,
+  //     message: PropTypes.string.isRequired,
+  //     likes_count: PropTypes.number.isRequired,
+  //   })
+  // ),
   selectedBoard: PropTypes.shape({
     boardId: PropTypes.number.isRequired,
     owner: PropTypes.string.isRequired,

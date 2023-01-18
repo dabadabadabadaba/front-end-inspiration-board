@@ -93,7 +93,7 @@ function App() {
     console.log(boardId);
     console.log(newCardInfo);
     axios
-      .post(`${URL}/${boardId}/card`)
+      .post(`${URL}/${boardId}/card`, newCardInfo)
       .then((response) => {
         console.log(boardId);
         const newCardList = [...cardData];

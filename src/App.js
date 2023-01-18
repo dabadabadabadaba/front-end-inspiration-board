@@ -172,7 +172,11 @@ function App() {
         boardData={boardData}
         setBoardData={setBoardData}
       />
-      <h2> {selectedBoard.cards.message}</h2>
+      <div>
+        <h2>Selected Board:</h2>
+        <p>{selectedBoard.title}</p>
+        <p>Owner: {selectedBoard.owner}</p>
+      </div>
     </div>
   );
 }

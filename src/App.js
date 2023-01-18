@@ -1,6 +1,6 @@
 import "./App.css";
 import { useEffect, useState } from "react";
-import Board from "./components/Board.js";
+// import Board from "./components/Board.js";
 import NewBoardForm from "./components/NewBoardForm.js";
 import NewCardForm from "./components/NewCardForm.js";
 import axios from "axios";
@@ -17,7 +17,7 @@ function App() {
     cards: [],
   });
 
-  const URL = "http://localhost:5000/board";
+  const URL = "http://127.0.0.1:5000/board";
 
   const getAllBoards = () => {
     axios

@@ -7,7 +7,7 @@ const INITIAL_FORM_DATA = {
   owner: "Type Owner name here",
 };
 
-const NewBoardForm = ({addBoardFunc}) => {
+const NewBoardForm = ({ addBoardFunc }) => {
   const [boardFormData, setBoardFormData] = useState(INITIAL_FORM_DATA);
 
   const handleChange = (e) => {
@@ -16,11 +16,11 @@ const NewBoardForm = ({addBoardFunc}) => {
       `Target name: ${e.target.name} Target value: ${e.target.value}`
     );
 
-  const newBoardData = {
-    ...boardFormData,
-    [e.target.name]: e.target.value,
-  };
-  setBoardFormData(newBoardData);
+    const newBoardData = {
+      ...boardFormData,
+      [e.target.name]: e.target.value,
+    };
+    setBoardFormData(newBoardData);
   };
 
   const handleNewBoardSubmit = (e) => {
@@ -28,28 +28,36 @@ const NewBoardForm = ({addBoardFunc}) => {
     addBoardFunc(boardFormData);
   };
 
+  const [isHidden, setIsHidden] = useState(false);
+
+  const formClass = isHidden === true ? "hidden" : "show";
+
+  const buttonContent =
+    isHidden === true ? "Expand Board Form" : "Collapse Board Form";
+
   return (
-    <form onSubmit={handleNewBoardSubmit}>
-      <label htmlFor="title">Title</label>
-      <input
-        type="text"
-        name="title"
-        id="title"
-        value={boardFormData.title}
-        onChange={handleChange}
-      />
-
-      <label htmlFor="owner">Owner's Name</label>
-      <input
-        type="text"
-        name="owner"
-        id="owner"
-        value={boardFormData.owner}
-        onChange={handleChange}
-      />
-
-      <input type="submit" value="Add Board" />
-    </form>
+    <div>
+      <form className={formClass} onSubmit={handleNewBoardSubmit}>
+        <label htmlFor="title">Title</label>
+        <input
+          type="text"
+          name="title"
+          id="title"
+          value={boardFormData.title}
+          onChange={handleChange}
+        />
+        <label htmlFor="owner">Owner's Name</label>
+        <input
+          type="text"
+          name="owner"
+          id="owner"
+          value={boardFormData.owner}
+          onChange={handleChange}
+        />
+        <input type="submit" value="Add Board" />
+      </form>
+      <button onClick={() => setIsHidden(!isHidden)}>{buttonContent}</button>
+    </div>
   );
 };
 

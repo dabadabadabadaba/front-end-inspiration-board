@@ -37,18 +37,21 @@ const NewCardForm = ({
   };
 
   return (
-    <form onSubmit={handleNewCardSubmit}>
-      <label htmlFor="message">Message</label>
-      <input
-        type="text"
-        name="message"
-        id="message"
-        value={cardFormData.message}
-        onChange={handleChange}
-      />
+    <div className="NewCardFormContainer">
+      <h2>Create A New Card</h2>
+      <form id="CardForm" onSubmit={handleNewCardSubmit}>
+        <label htmlFor="message">Message</label>
+        <input
+          type="text"
+          name="message"
+          id="message"
+          value={cardFormData.message}
+          onChange={handleChange}
+        />
 
-      <input type="submit" value="Add Card" />
-    </form>
+        <input type="submit" value="Add Card" />
+      </form>
+    </div>
   );
 };
 

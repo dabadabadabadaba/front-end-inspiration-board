@@ -1,6 +1,7 @@
 import axios from "axios";
 import PropTypes from "prop-types";
 import Card from "./Card";
+import "./Board.css";
 
 function Board({
   boardId,
@@ -49,8 +50,7 @@ function Board({
           currentBoard(boardId);
         }}
       >
-        <h2>{title}</h2>
-        {owner}
+        {title} | {owner}
         {cardComponents}
       </li>
     </div>

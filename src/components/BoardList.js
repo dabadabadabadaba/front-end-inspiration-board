@@ -1,6 +1,7 @@
 import Board from "./Board";
 import React from "react";
 import PropTypes from "prop-types";
+import "./BoardList.css";
 
 function BoardList({
   boardData,
@@ -29,8 +30,9 @@ function BoardList({
     );
   }
   return (
-    <div>
-      <ul>{ListofBoards}</ul>
+    <div id="BoardListContainer">
+      <h2>Boards</h2>
+      <ul id="ListOfBoards">{ListofBoards}</ul>
     </div>
   );
 }

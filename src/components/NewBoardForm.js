@@ -36,7 +36,8 @@ const NewBoardForm = ({ addBoardFunc }) => {
     isHidden === true ? "Expand Board Form" : "Collapse Board Form";
 
   return (
-    <div>
+    <div className="boardFormContainer">
+      <h2>Create A New Board</h2>
       <form
         className={`${formClass} boardForm`}
         onSubmit={handleNewBoardSubmit}

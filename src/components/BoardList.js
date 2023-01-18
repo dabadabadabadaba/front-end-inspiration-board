@@ -11,6 +11,7 @@ function BoardList({
   displayAllCardsForOneBoard,
 }) {
   const ListofBoards = [];
+  console.log("boardData in boardlist", boardData);
 
   for (const board of boardData) {
     ListofBoards.push(
@@ -29,9 +30,7 @@ function BoardList({
   }
   return (
     <div>
-      <ul>
-        {ListofBoards}
-      </ul>
+      <ul>{ListofBoards}</ul>
     </div>
   );
 }

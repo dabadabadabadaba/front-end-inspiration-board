@@ -37,7 +37,10 @@ const NewBoardForm = ({ addBoardFunc }) => {
 
   return (
     <div>
-      <form className={formClass} onSubmit={handleNewBoardSubmit}>
+      <form
+        className={`${formClass} boardForm`}
+        onSubmit={handleNewBoardSubmit}
+      >
         <label htmlFor="title">Title</label>
         <input
           type="text"

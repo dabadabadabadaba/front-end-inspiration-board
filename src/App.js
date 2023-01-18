@@ -151,6 +151,9 @@ function App() {
 
   return (
     <div>
+      <header>
+        <h1>Inspiration Board</h1>
+      </header>
       <BoardList
         boardData={boardData}
         cardData={cardData}

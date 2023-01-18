@@ -1,3 +1,11 @@
 .hidden {
     display: none;
 }
+.boardForm{
+    outline: black 1px solid;
+    padding: 1em;
+}
+input {
+    display: block;
+    margin: 1.5em;
+}

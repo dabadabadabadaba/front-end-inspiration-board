@@ -10,6 +10,13 @@ const INITIAL_FORM_DATA = {
 const NewBoardForm = ({ addBoardFunc }) => {
   const [boardFormData, setBoardFormData] = useState(INITIAL_FORM_DATA);
 
+  const [titlePlaceholder, setTitlePlaceholder] = useState(
+    INITIAL_FORM_DATA.title
+  );
+  const [ownerPlaceholder, setOwnerPlaceholder] = useState(
+    INITIAL_FORM_DATA.owner
+  );
+
   const handleChange = (e) => {
     console.log(`handle change called`);
     console.log(
@@ -24,8 +31,10 @@ const NewBoardForm = ({ addBoardFunc }) => {
   };
 
   const handleNewBoardSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault(); //prevents re-render
     addBoardFunc(boardFormData);
+    setTitlePlaceholder(INITIAL_FORM_DATA.title);
+    setOwnerPlaceholder(INITIAL_FORM_DATA.owner);
   };
 
   const [isHidden, setIsHidden] = useState(false);
@@ -48,6 +57,7 @@ const NewBoardForm = ({ addBoardFunc }) => {
           name="title"
           id="title"
           value={boardFormData.title}
+          placeholder="test"
           onChange={handleChange}
         />
         <label htmlFor="owner">Owner's Name</label>
@@ -56,6 +66,7 @@ const NewBoardForm = ({ addBoardFunc }) => {
           name="owner"
           id="owner"
           value={boardFormData.owner}
+          placeholder="test"
           onChange={handleChange}
         />
         <input type="submit" value="Add Board" />

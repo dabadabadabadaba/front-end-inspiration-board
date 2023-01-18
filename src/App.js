@@ -104,10 +104,11 @@ function App() {
             // pre-populate newCardList with the cards in list in board
             // push message from new card (with id and likes from database) to newCardlist
             const newCardList = [...board.cards];
+            console.log("response", response.data.card.card_id);
             newCardList.push({
-              card_id: response.data.card_id, //99
-              message: boardId.message, //TODO what should this be?? //"hardcoded"
-              likes_count: response.data.likes_count, //100
+              card_id: response.data.card.card_id, //99
+              message: response.data.card.message, //TODO what should this be?? //"hardcoded"
+              likes_count: response.data.card.likes_count, //100
             });
             // set newCardList as valiu of "cards" in new board
             // assign newBoard to boardData

@@ -4,9 +4,9 @@
 .boardForm {
     padding: 1em;
 }
-.boardFormContainer {
+/* .boardFormContainer {
     outline: black 1px solid;
-}
+} */
 input {
     display: block;
     margin-bottom: 1.5em;

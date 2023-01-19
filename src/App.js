@@ -162,19 +162,19 @@ function App() {
             newCardList.push(card);
           }
         }
-        selectedBoard.cards = newCardList;
-        setSelectedBoard(selectedBoard);
+        const newBoard = {
+          ...selectedBoard,
+          cards: newCardList,
+        };
+        console.log(`New card list = ${newCardList}`);
+        setSelectedBoard(newBoard);
       })
       .catch((err) => {
         console.log(err);
       });
   };
 
-  // Need a function to select 1 board - currently in Board
-  // Render the selected board here in App
   const cardComponents = [];
-  // console.log(`Cards${cards}`);
-
   for (const card of selectedBoard.cards) {
     // console.log(`Printing card data from board ${card}`);
     cardComponents.push(

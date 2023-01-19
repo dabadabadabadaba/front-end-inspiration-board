@@ -19,6 +19,7 @@ function App() {
   });
 
   const URL = "http://127.0.0.1:5000/board";
+  const CARD_URL = "http://127.0.0.1:5000/card";
 
   const getAllBoards = () => {
     axios
@@ -65,7 +66,7 @@ function App() {
     console.log("updateLikes called");
     const newCardsList = [];
     axios
-      .patch(`${URL}/${cardId}`)
+      .patch(`${CARD_URL}/${cardId}`, { likes_count: updatedLikes })
       .then((response) => {
         for (const card of cardData) {
           //
@@ -156,11 +157,30 @@ function App() {
       });
   };
 
-  // Need a function to select 1 board - currently in Board
-  // Render the selected board here in App
-  const cardComponents = [];
-  // console.log(`Cards${cards}`);
+  const deleteCard = (cardId) => {
+    console.log("deleteCard Called");
+    axios
+      .delete(`${CARD_URL}/${cardId}`)
+      .then(() => {
+        const newCardList = [];
+        for (const card of selectedBoard.cards) {
+          if (card.cardId !== cardId) {
+            newCardList.push(card);
+          }
+        }
+        const newBoard = {
+          ...selectedBoard,
+          cards: newCardList,
+        };
+        console.log(`New card list = ${newCardList}`);
+        setSelectedBoard(newBoard);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
+  const cardComponents = [];
   for (const card of selectedBoard.cards) {
     // console.log(`Printing card data from board ${card}`);
     cardComponents.push(
@@ -170,9 +190,11 @@ function App() {
         message={card.message}
         likes_count={card.likes_count}
         updateLikes={updateLikes}
+        deleteCard={deleteCard}
       />
     );
   }
+
   return (
     <div>
       <header>

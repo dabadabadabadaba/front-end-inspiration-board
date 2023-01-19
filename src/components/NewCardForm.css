@@ -1,12 +1,13 @@
 /* .NewCardFormContainer{
     border: 1px solid blue;
 } */
-/* #CardForm {
-    padding-left: 2em;
+#CardForm {
+    padding-left: 25px;
 }
+
 #newCardHeading {
-    padding-left: 2em;
-} */
+    padding-left: 25px;
+}
 
 .addCardButton {
     background-color: lightgreen;

@@ -30,7 +30,7 @@ function Board({
   // }
   // console.log("cardComponents", cardComponents);
 
-  const URL = "http://localhost:5000/board";
+  const URL = "http://127.0.0.1:5000/board";
   const currentBoard = (boardId) => {
     axios.get(`${URL}/${boardId}`).then((response) => {
       console.log("Calling currentBoard", response.data);

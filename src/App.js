@@ -65,7 +65,7 @@ function App() {
     console.log("updateLikes called");
     const newCardsList = [];
     axios
-      .patch(`${URL}/${cardId}`)
+      .patch(`${CARD_URL}/${cardId}`, { likes_count: updatedLikes })
       .then((response) => {
         for (const card of cardData) {
           console.log(`Card.id is ${card.id} and cardId is ${cardId}`);

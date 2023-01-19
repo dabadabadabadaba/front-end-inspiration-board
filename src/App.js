@@ -109,7 +109,7 @@ function App() {
             newCardList.push({
               card_id: response.data.card.card_id,
               message: response.data.card.message,
-              likes_count: response.data.card.likes_count,
+              likes_count: 0,
             });
             const newBoard = {
               ...board,

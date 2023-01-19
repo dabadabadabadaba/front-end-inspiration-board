@@ -122,6 +122,7 @@ function App() {
             newBoardDataCopy[i] = newBoard;
             console.log("logging boardData", newBoardDataCopy);
             setBoardData(newBoardDataCopy);
+            setSelectedBoard(newBoard);
           }
         });
       })

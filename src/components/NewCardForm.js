@@ -40,6 +40,7 @@ const NewCardForm = ({
       <form id="CardForm" onSubmit={handleNewCardSubmit}>
         <label htmlFor="message">Message</label>
         <input
+          className="createCardMessage"
           type="text"
           name="message"
           id="message"

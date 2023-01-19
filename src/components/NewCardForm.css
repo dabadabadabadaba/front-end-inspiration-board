@@ -11,9 +11,15 @@
 .addCardButton {
     background-color: lightgreen;
     border-radius: 6px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 
 label {
     font-size: x-large;
+    color:firebrick;
+}
+
+.createCardMessage {
+    background-color:#E8F3D6;
 }

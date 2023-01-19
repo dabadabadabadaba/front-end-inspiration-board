@@ -4,3 +4,12 @@
 #CardForm {
     padding: 1em;
 }
+
+.addCardButton {
+    background-color: lightgreen;
+    border-radius: 6px;
+}
+
+label {
+    font-size: x-large;
+}

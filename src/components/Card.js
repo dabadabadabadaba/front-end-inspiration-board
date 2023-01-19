@@ -10,7 +10,7 @@ const Card = ({ cardId, message, likes_count, updateLikes, deleteCard }) => {
   return (
     <div className="card">
       <p>{message}</p>
-      <p>{likes_count}</p>
+      <p className="likesCount">{likes_count}</p>
       <button className="likeButton" onClick={() => {addLikes();}}>
         Like!
       </button>

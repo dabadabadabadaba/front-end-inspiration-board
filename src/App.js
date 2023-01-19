@@ -34,7 +34,7 @@ function App() {
             cards: board.cards,
           };
         });
-        // console.log("console of boardAPICopy", boardsAPICopy);
+        console.log("console of boardAPICopy", boardsAPICopy);
         setBoardData(boardsAPICopy);
       })
       .catch((error) => {
@@ -61,6 +61,7 @@ function App() {
       });
   };
 
+  console.log("cardData from app.js", cardData);
   const updateLikes = (cardId, updatedLikes) => {
     console.log("updateLikes called");
     const newCardsList = [];
@@ -68,6 +69,7 @@ function App() {
       .patch(`${CARD_URL}/${cardId}`, { likes_count: updatedLikes })
       .then((response) => {
         for (const card of cardData) {
+          //
           console.log(`Card.id is ${card.id} and cardId is ${cardId}`);
           if (card.cardId !== cardId) {
             newCardsList.push(card);
@@ -81,6 +83,9 @@ function App() {
           }
         }
         console.log("newCardsList consolelog", newCardsList);
+        // const newCardListForBoard = {
+
+        // }
         setCardData(newCardsList);
       })
       .catch((error) => {
@@ -104,7 +109,11 @@ function App() {
             newCardList.push({
               card_id: response.data.card.card_id,
               message: response.data.card.message,
+<<<<<<< HEAD
               likes_count: response.data.card.likes_count,
+=======
+              likes_count: 0, // response.data.card.likes_count,
+>>>>>>> ed7255616ec5007237fbba318ab2ae4a48c201c0
             });
             const newBoard = {
               ...board,
@@ -206,7 +215,9 @@ function App() {
         <h2>Selected Board:</h2>
         <p>{selectedBoard.title}</p>
         <p>Owner: {selectedBoard.owner}</p>
-        <ul>Cards: {cardComponents}</ul>
+      </div>
+      <div>
+        <h2>Cards</h2> {cardComponents}
       </div>
     </div>
   );

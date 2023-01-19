@@ -217,10 +217,10 @@ function App() {
             boardData={boardData}
             setBoardData={setBoardData}
           />
-          <h2 id="invisibleHeading">Selected Board:</h2>
-          <div>
+          {/* <h2 id="invisibleHeading">Selected Board:</h2> */}
+          <div id="cardItems">
             <h2>Cards</h2>
-            {cardComponents}
+            <div id="cardComponents">{cardComponents}</div>
           </div>
         </div>
       </main>

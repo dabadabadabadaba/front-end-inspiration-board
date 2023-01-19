@@ -3,7 +3,7 @@
     margin: 1em;
     background-color: lightblue;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
-    font-size: x-large;
+    font-size: medium;
     text-align: center;
 }
 
@@ -18,4 +18,8 @@
     background-color: lightyellow;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     margin: 2rem;
+}
+
+.likesCount {
+    color: rgb(225, 126, 222) 
 }

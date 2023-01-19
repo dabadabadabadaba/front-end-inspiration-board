@@ -33,7 +33,7 @@ function App() {
             cards: board.cards,
           };
         });
-        // console.log("console of boardAPICopy", boardsAPICopy);
+        console.log("console of boardAPICopy", boardsAPICopy);
         setBoardData(boardsAPICopy);
       })
       .catch((error) => {
@@ -60,6 +60,7 @@ function App() {
       });
   };
 
+  console.log("cardData from app.js", cardData);
   const updateLikes = (cardId, updatedLikes) => {
     console.log("updateLikes called");
     const newCardsList = [];
@@ -67,6 +68,7 @@ function App() {
       .patch(`${URL}/${cardId}`)
       .then((response) => {
         for (const card of cardData) {
+          //
           console.log(`Card.id is ${card.id} and cardId is ${cardId}`);
           if (card.cardId !== cardId) {
             newCardsList.push(card);
@@ -80,6 +82,9 @@ function App() {
           }
         }
         console.log("newCardsList consolelog", newCardsList);
+        // const newCardListForBoard = {
+
+        // }
         setCardData(newCardsList);
       })
       .catch((error) => {
@@ -107,9 +112,9 @@ function App() {
             const newCardList = [...board.cards];
             // console.log("response", response.data.card.card_id);
             newCardList.push({
-              card_id: response.data.card.card_id, //99
-              message: response.data.card.message, //TODO what should this be?? //"hardcoded"
-              likes_count: response.data.card.likes_count, //100
+              card_id: response.data.card.card_id,
+              message: response.data.card.message,
+              likes_count: 0, // response.data.card.likes_count,
             });
             // set newCardList as valiu of "cards" in new board
             // assign newBoard to boardData
@@ -121,6 +126,7 @@ function App() {
             newBoardDataCopy[i] = newBoard;
             console.log("logging boardData", newBoardDataCopy);
             setBoardData(newBoardDataCopy);
+            setSelectedBoard(newBoard);
           }
         });
       })
@@ -191,7 +197,9 @@ function App() {
         <h2>Selected Board:</h2>
         <p>{selectedBoard.title}</p>
         <p>Owner: {selectedBoard.owner}</p>
-        <ul>Cards: {cardComponents}</ul>
+      </div>
+      <div>
+        <h2>Cards</h2> {cardComponents}
       </div>
     </div>
   );

@@ -5,6 +5,7 @@ import NewBoardForm from "./components/NewBoardForm.js";
 import NewCardForm from "./components/NewCardForm.js";
 import axios from "axios";
 import BoardList from "./components/BoardList.js";
+import Card from "./components/Card.js";
 
 function App() {
   const [cardData, setCardData] = useState([]);
@@ -151,7 +152,21 @@ function App() {
 
   // Need a function to select 1 board - currently in Board
   // Render the selected board here in App
+  const cardComponents = [];
+  // console.log(`Cards${cards}`);
 
+  for (const card of selectedBoard.cards) {
+    // console.log(`Printing card data from board ${card}`);
+    cardComponents.push(
+      <Card
+        key={card.card_id}
+        cardId={card.card_id}
+        message={card.message}
+        likes_count={card.likes_count}
+        updateLikes={updateLikes}
+      />
+    );
+  }
   return (
     <div>
       <header>
@@ -176,6 +191,7 @@ function App() {
         <h2>Selected Board:</h2>
         <p>{selectedBoard.title}</p>
         <p>Owner: {selectedBoard.owner}</p>
+        <ul>Cards: {cardComponents}</ul>
       </div>
     </div>
   );

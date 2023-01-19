@@ -13,21 +13,21 @@ function Board({
   displayAllCardsForOneBoard,
   updateLikes,
 }) {
-  const cardComponents = [];
-  // console.log(`Cards${cards}`);
+  // const cardComponents = [];
+  // // console.log(`Cards${cards}`);
 
-  for (const card of cards) {
-    // console.log(`Printing card data from board ${card}`);
-    cardComponents.push(
-      <Card
-        key={card.card_id}
-        cardId={card.card_id}
-        message={card.message}
-        likes_count={card.likes_count}
-        updateLikes={updateLikes}
-      />
-    );
-  }
+  // for (const card of cards) {
+  //   // console.log(`Printing card data from board ${card}`);
+  //   cardComponents.push(
+  //     <Card
+  //       key={card.card_id}
+  //       cardId={card.card_id}
+  //       message={card.message}
+  //       likes_count={card.likes_count}
+  //       updateLikes={updateLikes}
+  //     />
+  //   );
+  // }
   // console.log("cardComponents", cardComponents);
 
   const URL = "http://localhost:5000/board";
@@ -51,7 +51,7 @@ function Board({
         }}
       >
         {title} | {owner}
-        {cardComponents}
+        {/* {cardComponents} */}
       </li>
     </div>
   );

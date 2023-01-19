@@ -3,7 +3,7 @@ import "./NewCardForm.css";
 import PropTypes from "prop-types";
 
 const INITIAL_FORM_DATA = {
-  message: "Type Card Message Here",
+  message: "Card Message Here",
 };
 
 const NewCardForm = ({

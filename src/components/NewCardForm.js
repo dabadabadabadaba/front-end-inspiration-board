@@ -47,7 +47,7 @@ const NewCardForm = ({
           onChange={handleChange}
         />
 
-        <input type="submit" value="Add Card" />
+        <input className="addCardButton" type="submit" value="Add Card" />
       </form>
     </div>
   );

@@ -1,4 +1,21 @@
-.Card{
-    border: 1px solid black;
+.card {
+    border: 2px solid darkcyan;
     margin: 1em;
+    background-color: lightblue;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: x-large;
+    text-align: center;
+}
+
+.likeButton {
+    background-color: pink;
+    align-self: left;
+    margin: 2rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.deleteButton {
+    background-color: lightyellow;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 2rem;
 }

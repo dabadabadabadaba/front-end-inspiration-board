@@ -8,18 +8,16 @@ const Card = ({ cardId, message, likes_count, updateLikes, deleteCard }) => {
   }
 
   return (
-    <div className="Card">
+    <div className="card">
       <p>{message}</p>
       <p>{likes_count}</p>
-      <button
-        onClick={() => {
-          addLikes();
-        }}
-      >
+      <button className="likeButton" onClick={() => {addLikes();}}>
         Like!
       </button>
 
-      <button onClick={() => deleteCard(cardId)}>Delete Card</button>
+      <button className="deleteButton" onClick={() => deleteCard(cardId)}>
+        Delete Card
+      </button>
     </div>
   );
 };

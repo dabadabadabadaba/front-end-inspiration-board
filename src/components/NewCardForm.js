@@ -29,8 +29,6 @@ const NewCardForm = ({
     setCardFormData(newCardData);
   };
 
-  const updateLocalBoardState = () => {};
-
   const handleNewCardSubmit = (e) => {
     e.preventDefault();
     addCardFunc(selectedBoard.boardId, cardFormData);

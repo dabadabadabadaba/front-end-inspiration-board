@@ -1,9 +1,28 @@
 header {
-  text-align: center;
+    text-align: center;
 }
 
+#mainContainer {
+    display: flex;
+    flex-direction: column;
 
+}
 
+#upperContainerBoard {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#lowerContainerCard {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#invisibleHeading {
+    color: white;
+}
 /* .App {
   text-align: center;
 }

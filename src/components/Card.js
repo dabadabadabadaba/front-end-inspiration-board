@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import "./Card.css";
 
-const Card = ({ cardId, message, likes_count, updateLikes }) => {
+const Card = ({ cardId, message, likes_count, updateLikes, deleteCard }) => {
   // console.log("cardId", cardId);
   function addLikes() {
     updateLikes(cardId, likes_count + 1);
@@ -19,6 +19,7 @@ const Card = ({ cardId, message, likes_count, updateLikes }) => {
         >
           Like!
         </button>
+        <button onClick={() => deleteCard(cardId)}>Delete Card</button>
       </ul>
     </div>
   );

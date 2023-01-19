@@ -19,6 +19,7 @@ function App() {
   });
 
   const URL = "http://127.0.0.1:5000/board";
+  const CARD_URL = "http://127.0.0.1:5000/card";
 
   const getAllBoards = () => {
     axios
@@ -150,6 +151,25 @@ function App() {
       });
   };
 
+  const deleteCard = (cardId) => {
+    console.log("deleteCard Called");
+    axios
+      .delete(`${CARD_URL}/${cardId}`)
+      .then(() => {
+        const newCardList = [];
+        for (const card of selectedBoard.cards) {
+          if (card.cardId !== cardId) {
+            newCardList.push(card);
+          }
+        }
+        selectedBoard.cards = newCardList;
+        setSelectedBoard(selectedBoard);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   // Need a function to select 1 board - currently in Board
   // Render the selected board here in App
   const cardComponents = [];
@@ -164,9 +184,11 @@ function App() {
         message={card.message}
         likes_count={card.likes_count}
         updateLikes={updateLikes}
+        deleteCard={deleteCard}
       />
     );
   }
+
   return (
     <div>
       <header>

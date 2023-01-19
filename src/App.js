@@ -204,7 +204,7 @@ function App() {
           />
           <div>
             <h2>Selected Board:</h2>
-            <p>{selectedBoard.title}</p>
+            <p>Title: {selectedBoard.title}</p>
             <p>Owner: {selectedBoard.owner}</p>
           </div>
 
@@ -217,9 +217,8 @@ function App() {
             boardData={boardData}
             setBoardData={setBoardData}
           />
-          {/* <h2 id="invisibleHeading">Selected Board:</h2> */}
           <div id="cardItems">
-            <h2>Cards</h2>
+            {/* <h2 id="cardsHeading">Cards</h2> */}
             <div id="cardComponents">{cardComponents}</div>
           </div>
         </div>

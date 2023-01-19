@@ -1,14 +1,18 @@
 /* .NewCardFormContainer{
     border: 1px solid blue;
 } */
-#CardForm {
-    padding: 1em;
+/* #CardForm {
+    padding-left: 2em;
 }
+#newCardHeading {
+    padding-left: 2em;
+} */
 
 .addCardButton {
     background-color: lightgreen;
     border-radius: 6px;
 }
+
 
 label {
     font-size: x-large;

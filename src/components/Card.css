@@ -1,10 +1,14 @@
 .card {
-    border: 2px solid darkcyan;
+    /* border: 2px solid darkcyan; */
     margin: 1em;
     background-color: lightblue;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     font-size: medium;
     text-align: center;
+
+    padding: 2em;
+    border-radius: .3em;
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, .1);
 }
 
 .likeButton {
@@ -21,5 +25,5 @@
 }
 
 .likesCount {
-    color: rgb(225, 126, 222) 
+    color: rgb(225, 126, 222)
 }

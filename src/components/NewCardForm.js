@@ -36,7 +36,7 @@ const NewCardForm = ({
 
   return (
     <div className="NewCardFormContainer">
-      <h2>Create A New Card</h2>
+      <h2 id="newCardHeading">Create A New Card</h2>
       <form id="CardForm" onSubmit={handleNewCardSubmit}>
         <label htmlFor="message">Message</label>
         <input

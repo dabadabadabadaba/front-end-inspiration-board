@@ -97,23 +97,15 @@ function App() {
       .then((response) => {
         console.log(boardId);
 
-        // find the board that corresponds to boardId (in the boardState "boardData")
-        // update that board's cards with newCardsList
-        //setBoardData to updated boards
         boardData.forEach((board, i) => {
           if (board.boardId === boardId) {
-            // find the board that corresponds to boardId
-            // pre-populate newCardList with the cards in list in board
-            // push message from new card (with id and likes from database) to newCardlist
             const newCardList = [...board.cards];
-            // console.log("response", response.data.card.card_id);
+
             newCardList.push({
-              card_id: response.data.card.card_id, //99
-              message: response.data.card.message, //TODO what should this be?? //"hardcoded"
-              likes_count: response.data.card.likes_count, //100
+              card_id: response.data.card.card_id,
+              message: response.data.card.message,
+              likes_count: response.data.card.likes_count,
             });
-            // set newCardList as valiu of "cards" in new board
-            // assign newBoard to boardData
             const newBoard = {
               ...board,
               cards: newCardList,

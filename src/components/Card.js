@@ -29,9 +29,14 @@ const Card = ({ cardId, message, likes_count, updateLikes, deleteCard }) => {
           Like!
         </button>
 
+
       </ul> */}
 
       <button onClick={() => deleteCard(cardId)}>Delete Card</button>
+
+     
+
+
     </div>
   );
 };

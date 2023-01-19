@@ -190,31 +190,40 @@ function App() {
   return (
     <div>
       <header>
-        <h1>Inspiration Board</h1>
+        <h1>✨ Inspiration Board ✨</h1>
       </header>
-      <BoardList
-        boardData={boardData}
-        cardData={cardData}
-        selectedBoard={selectedBoard}
-        setSelectedBoard={setSelectedBoard}
-        updateLikes={updateLikes}
-        displayAllCardsForOneBoard={displayAllCardsForOneBoard}
-      />
-      <NewBoardForm addBoardFunc={addBoard} />
-      <NewCardForm
-        addCardFunc={addCard}
-        selectedBoard={selectedBoard}
-        boardData={boardData}
-        setBoardData={setBoardData}
-      />
-      <div>
-        <h2>Selected Board:</h2>
-        <p>{selectedBoard.title}</p>
-        <p>Owner: {selectedBoard.owner}</p>
-      </div>
-      <div>
-        <h2>Cards</h2> {cardComponents}
-      </div>
+      <main id="mainContainer">
+        <div id="upperContainerBoard">
+          <BoardList
+            boardData={boardData}
+            cardData={cardData}
+            selectedBoard={selectedBoard}
+            setSelectedBoard={setSelectedBoard}
+            updateLikes={updateLikes}
+            displayAllCardsForOneBoard={displayAllCardsForOneBoard}
+          />
+          <div>
+            <h2>Selected Board:</h2>
+            <p>{selectedBoard.title}</p>
+            <p>Owner: {selectedBoard.owner}</p>
+          </div>
+
+          <NewBoardForm addBoardFunc={addBoard} />
+        </div>
+        <div id="lowerContainerCard">
+          <NewCardForm
+            addCardFunc={addCard}
+            selectedBoard={selectedBoard}
+            boardData={boardData}
+            setBoardData={setBoardData}
+          />
+          <h2 id="invisibleHeading">Selected Board:</h2>
+          <div>
+            <h2>Cards</h2>
+            {cardComponents}
+          </div>
+        </div>
+      </main>
     </div>
   );
 }
